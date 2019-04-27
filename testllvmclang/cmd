@@ -1,0 +1,1 @@
+clang++ -mllvm -print-after-all ./classinit.cpp >log.txt 2>&1

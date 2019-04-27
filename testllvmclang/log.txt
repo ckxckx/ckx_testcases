@@ -1,0 +1,798 @@
+*** IR Dump After Instrument function entry/exit with calls to e.g. mcount() (pre inlining) ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Force set function attributes ***; ModuleID = './classinit.cpp'
+source_filename = "./classinit.cpp"
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%"struct.bar::Foo" = type { i32*, i32, double, i32 }
+
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+
+attributes #0 = { noinline norecurse nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 7.0.0 (trunk) (ssh://git@202.112.50.114:922/pUck/ckxllvm.git 13c488ca1ec5c302359a5719ed97d637aa8bdbfa)"}
+*** IR Dump After Inliner for always_inline functions ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Inliner for always_inline functions ***
+Printing <null> Function
+*** IR Dump After Pre-ISel Intrinsic Lowering ***; ModuleID = './classinit.cpp'
+source_filename = "./classinit.cpp"
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%"struct.bar::Foo" = type { i32*, i32, double, i32 }
+
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+
+attributes #0 = { noinline norecurse nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 7.0.0 (trunk) (ssh://git@202.112.50.114:922/pUck/ckxllvm.git 13c488ca1ec5c302359a5719ed97d637aa8bdbfa)"}
+*** IR Dump After Expand Atomic instructions ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Lower Garbage Collection Instructions ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Shadow Stack GC Lowering ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Remove unreachable blocks from the CFG ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Instrument function entry/exit with calls to e.g. mcount() (post inlining) ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Scalarize Masked Memory Intrinsics ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Expand reduction intrinsics ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Expand indirectbr instructions ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Rewrite Symbols ***; ModuleID = './classinit.cpp'
+source_filename = "./classinit.cpp"
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%"struct.bar::Foo" = type { i32*, i32, double, i32 }
+
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+
+attributes #0 = { noinline norecurse nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 7.0.0 (trunk) (ssh://git@202.112.50.114:922/pUck/ckxllvm.git 13c488ca1ec5c302359a5719ed97d637aa8bdbfa)"}
+*** IR Dump After Exception handling preparation ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+*** IR Dump After Safe Stack instrumentation pass ***
+; Function Attrs: noinline norecurse nounwind optnone uwtable
+define dso_local i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca %"struct.bar::Foo", align 8
+  store i32 0, i32* %1, align 4
+  store i32 13, i32* %2, align 4
+  %4 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 0
+  store i32* %2, i32** %4, align 8
+  %5 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 1
+  store i32 0, i32* %5, align 8
+  %6 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 2
+  store double 1.100000e+00, double* %6, align 8
+  %7 = getelementptr inbounds %"struct.bar::Foo", %"struct.bar::Foo"* %3, i32 0, i32 3
+  store i32 1, i32* %7, align 8
+  ret i32 56
+}
+# *** IR Dump After Expand ISel Pseudo-instructions ***:
+# Machine code for function main: IsSSA, TracksLiveness
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=32, align=8, at location [SP+8]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  %1:fr64 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi %stack.0, 1, $noreg, 0, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi %stack.1, 1, $noreg, 0, $noreg, 13 :: (store 4 into %ir.2)
+  %2:gr64 = LEA64r %stack.1, 1, $noreg, 0, $noreg
+  MOV64mr %stack.2, 1, $noreg, 0, $noreg, %2:gr64 :: (store 8 into %ir.4)
+  MOV32mi %stack.2, 1, $noreg, 8, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr %stack.2, 1, $noreg, 16, $noreg, %1:fr64 :: (store 8 into %ir.6)
+  MOV32mi %stack.2, 1, $noreg, 24, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  %0:gr32 = MOV32ri 56
+  $eax = COPY %0:gr32
+  RETQ implicit $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Local Stack Slot Allocation ***:
+# Machine code for function main: IsSSA, TracksLiveness
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=32, align=8, at location [SP+8]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  %1:fr64 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi %stack.0, 1, $noreg, 0, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi %stack.1, 1, $noreg, 0, $noreg, 13 :: (store 4 into %ir.2)
+  %2:gr64 = LEA64r %stack.1, 1, $noreg, 0, $noreg
+  MOV64mr %stack.2, 1, $noreg, 0, $noreg, %2:gr64 :: (store 8 into %ir.4)
+  MOV32mi %stack.2, 1, $noreg, 8, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr %stack.2, 1, $noreg, 16, $noreg, %1:fr64 :: (store 8 into %ir.6)
+  MOV32mi %stack.2, 1, $noreg, 24, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  %0:gr32 = MOV32ri 56
+  $eax = COPY %0:gr32
+  RETQ implicit $eax
+
+# End machine code for function main.
+
+# *** IR Dump After X86 EFLAGS copy lowering ***:
+# Machine code for function main: IsSSA, TracksLiveness
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=32, align=8, at location [SP+8]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  %1:fr64 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi %stack.0, 1, $noreg, 0, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi %stack.1, 1, $noreg, 0, $noreg, 13 :: (store 4 into %ir.2)
+  %2:gr64 = LEA64r %stack.1, 1, $noreg, 0, $noreg
+  MOV64mr %stack.2, 1, $noreg, 0, $noreg, %2:gr64 :: (store 8 into %ir.4)
+  MOV32mi %stack.2, 1, $noreg, 8, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr %stack.2, 1, $noreg, 16, $noreg, %1:fr64 :: (store 8 into %ir.6)
+  MOV32mi %stack.2, 1, $noreg, 24, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  %0:gr32 = MOV32ri 56
+  $eax = COPY %0:gr32
+  RETQ implicit $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Eliminate PHI nodes for register allocation ***:
+# Machine code for function main: NoPHIs, TracksLiveness
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=32, align=8, at location [SP+8]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  %1:fr64 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi %stack.0, 1, $noreg, 0, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi %stack.1, 1, $noreg, 0, $noreg, 13 :: (store 4 into %ir.2)
+  %2:gr64 = LEA64r %stack.1, 1, $noreg, 0, $noreg
+  MOV64mr %stack.2, 1, $noreg, 0, $noreg, %2:gr64 :: (store 8 into %ir.4)
+  MOV32mi %stack.2, 1, $noreg, 8, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr %stack.2, 1, $noreg, 16, $noreg, %1:fr64 :: (store 8 into %ir.6)
+  MOV32mi %stack.2, 1, $noreg, 24, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  %0:gr32 = MOV32ri 56
+  $eax = COPY %0:gr32
+  RETQ implicit $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Two-Address instruction pass ***:
+# Machine code for function main: NoPHIs, TracksLiveness
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=32, align=8, at location [SP+8]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  %1:fr64 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi %stack.0, 1, $noreg, 0, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi %stack.1, 1, $noreg, 0, $noreg, 13 :: (store 4 into %ir.2)
+  %2:gr64 = LEA64r %stack.1, 1, $noreg, 0, $noreg
+  MOV64mr %stack.2, 1, $noreg, 0, $noreg, %2:gr64 :: (store 8 into %ir.4)
+  MOV32mi %stack.2, 1, $noreg, 8, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr %stack.2, 1, $noreg, 16, $noreg, %1:fr64 :: (store 8 into %ir.6)
+  MOV32mi %stack.2, 1, $noreg, 24, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  %0:gr32 = MOV32ri 56
+  $eax = COPY %0:gr32
+  RETQ implicit $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Fast Register Allocator ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=32, align=8, at location [SP+8]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi %stack.0, 1, $noreg, 0, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi %stack.1, 1, $noreg, 0, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r %stack.1, 1, $noreg, 0, $noreg
+  MOV64mr %stack.2, 1, $noreg, 0, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi %stack.2, 1, $noreg, 8, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr %stack.2, 1, $noreg, 16, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi %stack.2, 1, $noreg, 24, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Prologue/Epilogue Insertion & Frame Finalization ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Post-RA pseudo instruction expansion pass ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Analyze Machine Code For Garbage Collection ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Shadow Call Stack ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Contiguously Lay Out Funclets ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After StackMap Liveness Analysis ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Live DEBUG_VALUE analysis ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Insert fentry calls ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Insert XRay ops ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Implement the 'patchable-function' attribute ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+
+# *** IR Dump After Check CFA info and insert CFI instructions if needed ***:
+# Machine code for function main: NoPHIs, TracksLiveness, NoVRegs
+Frame Objects:
+  fi#-1: size=8, align=16, fixed, at location [SP-8]
+  fi#0: size=4, align=4, at location [SP-12]
+  fi#1: size=4, align=4, at location [SP-16]
+  fi#2: size=32, align=8, at location [SP-48]
+Constant Pool:
+  cp#0: 1.100000e+00, align=8
+
+bb.0 (%ir-block.0):
+  frame-setup PUSH64r killed $rbp, implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa_offset 16
+  CFI_INSTRUCTION offset $rbp, -16
+  $rbp = frame-setup MOV64rr $rsp
+  CFI_INSTRUCTION def_cfa_register $rbp
+  renamable $xmm0 = MOVSDrm $rip, 1, $noreg, %const.0, $noreg
+  MOV32mi $rbp, 1, $noreg, -4, $noreg, 0 :: (store 4 into %ir.1)
+  MOV32mi $rbp, 1, $noreg, -8, $noreg, 13 :: (store 4 into %ir.2)
+  renamable $rax = LEA64r $rbp, 1, $noreg, -8, $noreg
+  MOV64mr $rbp, 1, $noreg, -40, $noreg, killed renamable $rax :: (store 8 into %ir.4)
+  MOV32mi $rbp, 1, $noreg, -32, $noreg, 0 :: (store 4 into %ir.5, align 8)
+  MOVSDmr $rbp, 1, $noreg, -24, $noreg, killed renamable $xmm0 :: (store 8 into %ir.6)
+  MOV32mi $rbp, 1, $noreg, -16, $noreg, 1 :: (store 4 into %ir.7, align 8)
+  renamable $eax = MOV32ri 56
+  $rbp = frame-destroy POP64r implicit-def $rsp, implicit $rsp
+  CFI_INSTRUCTION def_cfa $rsp, 8
+  RETQ implicit killed $eax
+
+# End machine code for function main.
+

@@ -1,0 +1,219 @@
+
+*** Layout:
+         0 | struct timespec
+         0 |   __time_t tv_sec
+         8 |   __syscall_slong_t tv_nsec
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Layout:
+         0 | struct (anonymous at /usr/include/pthread.h:525:3)
+         0 |   __jmp_buf __cancel_jmp_buf
+        64 |   int __mask_was_saved
+           | [sizeof=72, dsize=72, align=8,
+           |  nvsize=72, nvalign=8]
+
+*** Layout:
+         0 | class std::locale::_Impl
+         0 |   _Atomic_word _M_refcount
+         8 |   const class std::locale::facet ** _M_facets
+        16 |   size_t _M_facets_size
+        24 |   const class std::locale::facet ** _M_caches
+        32 |   char ** _M_names
+           | [sizeof=40, dsize=40, align=8,
+           |  nvsize=40, nvalign=8]
+
+*** Layout:
+         0 | struct std::ios_base::_Words
+         0 |   void * _M_pword
+         8 |   long _M_iword
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Layout:
+         0 | class std::ios_base::Init (empty)
+           | [sizeof=1, dsize=0, align=1,
+           |  nvsize=0, nvalign=1]
+
+*** Layout:
+         0 | class std::locale
+         0 |   class std::locale::_Impl * _M_impl
+           | [sizeof=8, dsize=8, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Layout:
+         0 | class std::ios_base
+         0 |   (ios_base vtable pointer)
+         8 |   streamsize _M_precision
+        16 |   streamsize _M_width
+        24 |   fmtflags _M_flags
+        28 |   iostate _M_exception
+        32 |   iostate _M_streambuf_state
+        40 |   struct std::ios_base::_Callback_list * _M_callbacks
+        48 |   struct std::ios_base::_Words _M_word_zero
+        48 |     void * _M_pword
+        56 |     long _M_iword
+        64 |   struct std::ios_base::_Words [8] _M_local_word
+       192 |   int _M_word_size
+       200 |   struct std::ios_base::_Words * _M_word
+       208 |   class std::locale _M_ios_locale
+       208 |     class std::locale::_Impl * _M_impl
+           | [sizeof=216, dsize=216, align=8,
+           |  nvsize=216, nvalign=8]
+
+*** Layout:
+         0 | class std::basic_ios<char>
+         0 |   class std::ios_base (primary base)
+         0 |     (ios_base vtable pointer)
+         8 |     streamsize _M_precision
+        16 |     streamsize _M_width
+        24 |     fmtflags _M_flags
+        28 |     iostate _M_exception
+        32 |     iostate _M_streambuf_state
+        40 |     struct std::ios_base::_Callback_list * _M_callbacks
+        48 |     struct std::ios_base::_Words _M_word_zero
+        48 |       void * _M_pword
+        56 |       long _M_iword
+        64 |     struct std::ios_base::_Words [8] _M_local_word
+       192 |     int _M_word_size
+       200 |     struct std::ios_base::_Words * _M_word
+       208 |     class std::locale _M_ios_locale
+       208 |       class std::locale::_Impl * _M_impl
+       216 |   basic_ostream<char, struct std::char_traits<char> > * _M_tie
+       224 |   char_type _M_fill
+       225 |   _Bool _M_fill_init
+       232 |   basic_streambuf<char, struct std::char_traits<char> > * _M_streambuf
+       240 |   const __ctype_type * _M_ctype
+       248 |   const __num_put_type * _M_num_put
+       256 |   const __num_get_type * _M_num_get
+           | [sizeof=264, dsize=264, align=8,
+           |  nvsize=264, nvalign=8]
+
+*** Layout:
+         0 | class std::basic_ostream<char>
+         0 |   (basic_ostream vtable pointer)
+         8 |   class std::basic_ios<char> (virtual base)
+         8 |     class std::ios_base (primary base)
+         8 |       (ios_base vtable pointer)
+        16 |       streamsize _M_precision
+        24 |       streamsize _M_width
+        32 |       fmtflags _M_flags
+        36 |       iostate _M_exception
+        40 |       iostate _M_streambuf_state
+        48 |       struct std::ios_base::_Callback_list * _M_callbacks
+        56 |       struct std::ios_base::_Words _M_word_zero
+        56 |         void * _M_pword
+        64 |         long _M_iword
+        72 |       struct std::ios_base::_Words [8] _M_local_word
+       200 |       int _M_word_size
+       208 |       struct std::ios_base::_Words * _M_word
+       216 |       class std::locale _M_ios_locale
+       216 |         class std::locale::_Impl * _M_impl
+       224 |     basic_ostream<char, struct std::char_traits<char> > * _M_tie
+       232 |     char_type _M_fill
+       233 |     _Bool _M_fill_init
+       240 |     basic_streambuf<char, struct std::char_traits<char> > * _M_streambuf
+       248 |     const __ctype_type * _M_ctype
+       256 |     const __num_put_type * _M_num_put
+       264 |     const __num_get_type * _M_num_get
+           | [sizeof=272, dsize=272, align=8,
+           |  nvsize=8, nvalign=8]
+
+*** Layout:
+         0 | struct std::ios_base::_Callback_list
+         0 |   struct std::ios_base::_Callback_list * _M_next
+         8 |   class ios_base::event_callback _M_fn
+        16 |   int _M_index
+        20 |   _Atomic_word _M_refcount
+           | [sizeof=24, dsize=24, align=8,
+           |  nvsize=24, nvalign=8]
+
+*** Layout:
+         0 | class std::locale::facet
+         0 |   (facet vtable pointer)
+         8 |   _Atomic_word _M_refcount
+           | [sizeof=16, dsize=12, align=8,
+           |  nvsize=12, nvalign=8]
+
+*** Layout:
+         0 | class std::basic_streambuf<char>
+         0 |   (basic_streambuf vtable pointer)
+         8 |   char_type * _M_in_beg
+        16 |   char_type * _M_in_cur
+        24 |   char_type * _M_in_end
+        32 |   char_type * _M_out_beg
+        40 |   char_type * _M_out_cur
+        48 |   char_type * _M_out_end
+        56 |   class std::locale _M_buf_locale
+        56 |     class std::locale::_Impl * _M_impl
+           | [sizeof=64, dsize=64, align=8,
+           |  nvsize=64, nvalign=8]
+
+*** Layout:
+         0 | struct std::ctype_base (empty)
+           | [sizeof=1, dsize=1, align=1,
+           |  nvsize=1, nvalign=1]
+
+*** Layout:
+         0 | class std::ctype<char>
+         0 |   class std::locale::facet (primary base)
+         0 |     (facet vtable pointer)
+         8 |     _Atomic_word _M_refcount
+         0 |   struct std::ctype_base (base) (empty)
+        16 |   __c_locale _M_c_locale_ctype
+        24 |   _Bool _M_del
+        32 |   __to_type _M_toupper
+        40 |   __to_type _M_tolower
+        48 |   const mask * _M_table
+        56 |   char _M_widen_ok
+        57 |   char [256] _M_widen
+       313 |   char [256] _M_narrow
+       569 |   char _M_narrow_ok
+           | [sizeof=576, dsize=570, align=8,
+           |  nvsize=570, nvalign=8]
+
+*** Layout:
+         0 | struct __locale_struct
+         0 |   struct __locale_data *[13] __locales
+       104 |   const unsigned short * __ctype_b
+       112 |   const int * __ctype_tolower
+       120 |   const int * __ctype_toupper
+       128 |   const char *[13] __names
+           | [sizeof=232, dsize=232, align=8,
+           |  nvsize=232, nvalign=8]
+
+*** Layout:
+         0 | class std::num_put<char>
+         0 |   class std::locale::facet (primary base)
+         0 |     (facet vtable pointer)
+         8 |     _Atomic_word _M_refcount
+           | [sizeof=16, dsize=12, align=8,
+           |  nvsize=12, nvalign=8]
+
+*** Layout:
+         0 | class std::num_get<char>
+         0 |   class std::locale::facet (primary base)
+         0 |     (facet vtable pointer)
+         8 |     _Atomic_word _M_refcount
+           | [sizeof=16, dsize=12, align=8,
+           |  nvsize=12, nvalign=8]
+
+*** Layout:
+         0 | class base
+         0 |   (base vtable pointer)
+         8 |   int mem1
+        12 |   int mem2
+           | [sizeof=16, dsize=16, align=8,
+           |  nvsize=16, nvalign=8]
+
+*** Layout:
+         0 | class sub
+         0 |   class base (primary base)
+         0 |     (base vtable pointer)
+         8 |     int mem1
+        12 |     int mem2
+        16 |   int sub_mem1
+        20 |   int sub_mem2
+        24 |   void (*)(void) fun_ptr
+           | [sizeof=32, dsize=32, align=8,
+           |  nvsize=32, nvalign=8]
